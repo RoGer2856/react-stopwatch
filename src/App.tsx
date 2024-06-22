@@ -13,12 +13,16 @@ export default function App(): ReactElement {
     });
   }
 
+  function onResetLaps() {
+    setLapsInMillis([]);
+  }
+
   return (
     <>
       <Layout>
         <div className={styles.cards__container}>
           <div className={styles.card}>
-            <Stopwatch onLapAdded={onLapAdded} />
+            <Stopwatch onLapAdded={onLapAdded} onResetLaps={onResetLaps} />
           </div>
           <div className={styles.card}>
             <Laps lapsInMillis={lapsInMillis} />

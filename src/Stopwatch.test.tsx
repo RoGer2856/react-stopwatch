@@ -19,7 +19,7 @@ function queryResetButton() {
 }
 
 test('intial state; buttons and elapsed time render', () => {
-  render(<Stopwatch onLapAdded={(lapInMillis) => {}} />);
+  render(<Stopwatch onLapAdded={(lapInMillis) => { }} onResetLaps={() => { }} />);
 
   expect(getElapsedTimeText()).toBe('00:00:000');
 
@@ -37,7 +37,7 @@ test('intial state; buttons and elapsed time render', () => {
 test('starting stopwatch; time increases', () => {
   jest.useFakeTimers();
 
-  render(<Stopwatch onLapAdded={(lapInMillis) => {}} />);
+  render(<Stopwatch onLapAdded={(lapInMillis) => { }} onResetLaps={() => { }} />);
 
   fireEvent.click(queryStartButton()!);
 
@@ -57,7 +57,7 @@ test('starting stopwatch; time increases', () => {
 test('starting, then pausing stopwatch; time increases, then stops', () => {
   jest.useFakeTimers();
 
-  render(<Stopwatch onLapAdded={(lapInMillis) => {}} />);
+  render(<Stopwatch onLapAdded={(lapInMillis) => { }} onResetLaps={() => { }} />);
 
   fireEvent.click(queryStartButton()!);
 
@@ -79,7 +79,7 @@ test('starting, then pausing stopwatch; time increases, then stops', () => {
 test('starting, then resetting stopwatch; time increases, then timer is set to 0 and stops', () => {
   jest.useFakeTimers();
 
-  render(<Stopwatch onLapAdded={(lapInMillis) => {}} />);
+  render(<Stopwatch onLapAdded={(lapInMillis) => { }} onResetLaps={() => { }} />);
 
   fireEvent.click(queryStartButton()!);
 
@@ -103,7 +103,7 @@ test('starting, then resetting stopwatch; time increases, then timer is set to 0
 test('resetting the timer while it is running; time is reset to 0 and stops incrementing', () => {
   jest.useFakeTimers();
 
-  render(<Stopwatch onLapAdded={(lapInMillis) => {}} />);
+  render(<Stopwatch onLapAdded={(lapInMillis) => { }} onResetLaps={() => { }} />);
 
   fireEvent.click(queryStartButton()!);
 
@@ -152,7 +152,7 @@ test('resetting the timer while it is running; time is reset to 0 and stops incr
 test('start, pause, reset; checking button availabilities and their functions and time elapsing', () => {
   jest.useFakeTimers();
 
-  render(<Stopwatch onLapAdded={(lapInMillis) => {}} />);
+  render(<Stopwatch onLapAdded={(lapInMillis) => { }} onResetLaps={() => { }} />);
 
   fireEvent.click(queryStartButton()!);
 

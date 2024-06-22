@@ -6,6 +6,7 @@ const TIME_STEP_MILLIS = 10;
 
 export default function Stopwatch(props: {
   onLapAdded: (lapInMillis: number) => void;
+  onResetLaps: () => void;
 }): ReactElement {
   const [timeMillis, setTimeMillis] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
@@ -33,6 +34,11 @@ export default function Stopwatch(props: {
   function onReset() {
     setIsRunning(false);
     setTimeMillis(0);
+    props.onResetLaps();
+  }
+
+  function onLap() {
+    props.onLapAdded(timeMillis);
   }
 
   const timeComponents = computeTimeComponents(timeMillis);
@@ -70,6 +76,14 @@ export default function Stopwatch(props: {
           aria-label="reset stopwatch"
         >
           Reset
+        </button>
+        <button
+          className={`${styles.button} ${styles.button__lap}`}
+          onClick={onLap}
+          disabled={timeMillis === 0 || !isRunning}
+          aria-label="memorize lap"
+        >
+          Lap
         </button>
       </div>
     </>
