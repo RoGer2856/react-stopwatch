@@ -4,7 +4,9 @@ import styles from './Stopwatch.module.css';
 
 const TIME_STEP_MILLIS = 10;
 
-export default function Stopwatch(): ReactElement {
+export default function Stopwatch(props: {
+  onLapAdded: (lapInMillis: number) => void;
+}): ReactElement {
   const [timeMillis, setTimeMillis] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
