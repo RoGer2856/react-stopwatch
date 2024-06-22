@@ -9,7 +9,9 @@ export default function Laps(props: {
 	return <>
 		<div className={styles.container}>
 			{props.lapsInMillis.length === 0
-				? <div>No laps recorded</div>
+				? <>
+					<div>No laps recorded</div>
+				</>
 				: <>
 					<div>Recorded laps</div>
 					<div className={styles.list__container}>

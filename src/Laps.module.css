@@ -1,11 +1,6 @@
-/* .container {
+.container {
 	padding: 20px;
-	display: flex;
-	flex-flow: row wrap;
-	align-items: flex-start;
-	justify-content: center;
-	gap: 20px;
-} */
+}
 
 .list__container {
 	margin-top: 15px;
@@ -21,7 +16,6 @@
 	margin-right: 5px;
 	padding: 0;
 	list-style: none;
-	/* border: 1px solid #e1e4e8; */
 }
 
 .list>li {
@@ -37,5 +31,8 @@
 }
 
 :global(.button).button__clear {
-	background-color: #ff0000;
+	background-color: orange;
+	/* position: absolute; */
+	/* bottom: -20px; */
+	/* right: 0; */
 }
