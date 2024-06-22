@@ -1,10 +1,15 @@
-import React, { ReactElement } from 'react';
+import { ReactElement } from 'react';
 import Stopwatch from './Stopwatch';
+import styles from './App.module.css';
 
 export default function App(): ReactElement {
   return (
     <>
-      <Stopwatch />
+      <div className={styles.content__container}>
+        <div className={styles.card}>
+          <Stopwatch />
+        </div>
+      </div>
     </>
   );
 }

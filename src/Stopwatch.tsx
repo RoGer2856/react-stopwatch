@@ -1,5 +1,6 @@
-import React, { ReactElement, useEffect, useState } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { padWithZeroes } from './utils';
+import styles from './Stopwatch.module.css';
 
 const TIME_STEP_MILLIS = 100;
 
@@ -39,12 +40,14 @@ export default function Stopwatch(): ReactElement {
   return (
     <>
       <div>{`${minutes}:${secondsInTheMinute}:${millisInTheSecond}`}</div>
-      {
-        isRunning
-          ? <button onClick={onPause} disabled={!isRunning}>Pause</button>
-          : <button onClick={onStart} disabled={isRunning}>Start</button>
-      }
-      <button onClick={onReset} disabled={isRunning || timeMillis === 0}>Reset</button>
+      <div>
+        {
+          isRunning
+            ? <button className={`${styles.button} ${styles.button__pause}`} onClick={onPause} disabled={!isRunning}>Pause</button>
+            : <button className={`${styles.button} ${styles.button__start}`} onClick={onStart} disabled={isRunning}>Start</button>
+        }
+        <button className={`${styles.button} ${styles.button__reset}`} onClick={onReset} disabled={isRunning || timeMillis === 0}>Reset</button>
+      </div>
     </>
   );
 }
