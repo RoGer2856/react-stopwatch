@@ -18,7 +18,7 @@ export default function Stopwatch(): ReactElement {
     }, TIME_STEP_MILLIS)
 
     return () => clearInterval(intervalId);
-  }, [isRunning]);
+  }, [isRunning, setTimeMillis]);
 
   function onStart() {
     setIsRunning(true);
@@ -29,6 +29,7 @@ export default function Stopwatch(): ReactElement {
   }
 
   function onReset() {
+    setIsRunning(false);
     setTimeMillis(0);
   }
 
@@ -63,7 +64,7 @@ export default function Stopwatch(): ReactElement {
         <button
           className={`${styles.button} ${styles.button__reset}`}
           onClick={onReset}
-          disabled={isRunning || timeMillis === 0}
+          disabled={timeMillis === 0}
           aria-label="reset stopwatch"
         >
           Reset

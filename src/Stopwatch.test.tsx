@@ -18,7 +18,7 @@ function queryResetButton() {
   return screen.getByLabelText('reset stopwatch');
 }
 
-test('intial state render; buttons and elapsed time', () => {
+test('intial state; buttons and elapsed time render', () => {
   render(<Stopwatch />);
 
   expect(getElapsedTimeText()).toBe('00:00:000');
@@ -32,6 +32,121 @@ test('intial state render; buttons and elapsed time', () => {
   const resetButton = queryResetButton();
   expect(resetButton).toBeInTheDocument();
   expect(resetButton).toBeDisabled();
+});
+
+test('starting stopwatch; time increases', () => {
+  jest.useFakeTimers();
+
+  render(<Stopwatch />);
+
+  fireEvent.click(queryStartButton()!);
+
+  act(() => {
+    jest.advanceTimersByTime(1500);
+  });
+
+  expect(getElapsedTimeText()).toBe('00:01:500');
+
+  act(() => {
+    jest.advanceTimersByTime(1500);
+  });
+
+  expect(getElapsedTimeText()).toBe('00:03:000');
+});
+
+test('starting, then pausing stopwatch; time increases, then stops', () => {
+  jest.useFakeTimers();
+
+  render(<Stopwatch />);
+
+  fireEvent.click(queryStartButton()!);
+
+  act(() => {
+    jest.advanceTimersByTime(1500);
+  });
+
+  expect(getElapsedTimeText()).toBe('00:01:500');
+
+  fireEvent.click(queryPauseButton()!);
+
+  act(() => {
+    jest.advanceTimersByTime(1500);
+  });
+
+  expect(getElapsedTimeText()).toBe('00:01:500');
+});
+
+test('starting, then resetting stopwatch; time increases, then timer is set to 0 and stops', () => {
+  jest.useFakeTimers();
+
+  render(<Stopwatch />);
+
+  fireEvent.click(queryStartButton()!);
+
+  act(() => {
+    jest.advanceTimersByTime(1500);
+  });
+
+  expect(getElapsedTimeText()).toBe('00:01:500');
+
+  fireEvent.click(queryResetButton()!);
+
+  expect(getElapsedTimeText()).toBe('00:00:000');
+
+  act(() => {
+    jest.advanceTimersByTime(1500);
+  });
+
+  expect(getElapsedTimeText()).toBe('00:00:000');
+});
+
+test('resetting the timer while it is running; time is reset to 0 and stops incrementing', () => {
+  jest.useFakeTimers();
+
+  render(<Stopwatch />);
+
+  fireEvent.click(queryStartButton()!);
+
+  act(() => {
+    jest.advanceTimersByTime(1500);
+  });
+
+  {
+    expect(getElapsedTimeText()).toBe('00:01:500');
+
+    const startButton = queryStartButton();
+    expect(startButton).toBeNull();
+
+    const pauseButton = queryPauseButton();
+    expect(pauseButton).toBeInTheDocument();
+    expect(pauseButton).not.toBeDisabled();
+
+    const resetButton = queryResetButton();
+    expect(resetButton).toBeInTheDocument();
+    expect(resetButton).not.toBeDisabled();
+  }
+
+  fireEvent.click(queryResetButton()!);
+
+  {
+    expect(getElapsedTimeText()).toBe('00:00:000');
+
+    const startButton = queryStartButton();
+    expect(startButton).toBeInTheDocument();
+    expect(startButton).not.toBeDisabled();
+
+    expect(queryPauseButton()).toBeNull();
+
+    const resetButton = queryResetButton();
+    expect(resetButton).toBeInTheDocument();
+    expect(resetButton).toBeDisabled();
+  }
+
+  act(() => {
+    jest.advanceTimersByTime(1500);
+  });
+
+  expect(getElapsedTimeText()).toBe('00:00:000');
 });
 
 test('start, pause, reset; checking button availabilities and their functions and time elapsing', () => {
@@ -57,7 +172,7 @@ test('start, pause, reset; checking button availabilities and their functions an
 
     const resetButton = queryResetButton();
     expect(resetButton).toBeInTheDocument();
-    expect(resetButton).toBeDisabled();
+    expect(resetButton).not.toBeDisabled();
   }
 
   fireEvent.click(queryPauseButton()!);
