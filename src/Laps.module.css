@@ -1,3 +1,12 @@
+/* .container {
+	padding: 20px;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 20px;
+} */
+
 .list__container {
 	margin-top: 15px;
 	max-height: 250px;
@@ -25,4 +34,8 @@
 
 .list>li:nth-last-child(even) {
 	background-color: #fff;
+}
+
+:global(.button).button__clear {
+	background-color: #ff0000;
 }

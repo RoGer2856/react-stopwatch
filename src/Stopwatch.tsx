@@ -51,7 +51,7 @@ export default function Stopwatch(props: {
           {
             isRunning
               ? <button
-                className={`${styles.button} ${styles.button__pause}`}
+                className={`button ${styles.button__pause}`}
                 onClick={onPause}
                 disabled={!isRunning}
                 aria-label="pause stopwatch"
@@ -59,7 +59,7 @@ export default function Stopwatch(props: {
                 Pause
               </button>
               : <button
-                className={`${styles.button} ${styles.button__start}`}
+                className={`button ${styles.button__start}`}
                 onClick={onStart}
                 disabled={isRunning}
                 aria-label="start stopwatch"
@@ -68,7 +68,7 @@ export default function Stopwatch(props: {
               </button>
           }
           <button
-            className={`${styles.button} ${styles.button__reset}`}
+            className={`button ${styles.button__reset}`}
             onClick={onReset}
             disabled={timeMillis === 0}
             aria-label="reset stopwatch"
@@ -76,7 +76,7 @@ export default function Stopwatch(props: {
             Reset
           </button>
           <button
-            className={`${styles.button} ${styles.button__lap}`}
+            className={`button ${styles.button__lap}`}
             onClick={onLap}
             disabled={timeMillis === 0 || !isRunning}
             aria-label="memorize lap"

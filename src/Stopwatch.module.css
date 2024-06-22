@@ -7,55 +7,34 @@
   font-family: monospace;
 }
 
-.button {
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 10px;
-  color: white;
-  padding: 15px 32px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-
-}
-
-.button:disabled {
-  background-color: #cccccc !important;
-  color: #666666 !important;
-  cursor: default !important;
-}
-
-.button.button__start {
+:global(.button).button__start {
   background-color: #4CAF50;
 }
 
-.button.button__reset {
+:global(.button).button__reset {
   background-color: #f44336;
 }
 
-.button.button__pause {
+:global(.button).button__pause {
   background-color: #008CBA;
 }
 
-.button.button__lap {
+:global(.button).button__lap {
   background-color: #555555;
 }
 
-.button.button__start:enabled:hover {
+:global(.button).button__start:enabled:hover {
   background-color: #45a049 !important;
 }
 
-.button.button__reset:enabled:hover {
+:global(.button).button__reset:enabled:hover {
   background-color: #da190b !important;
 }
 
-.button.button__pause:enabled:hover {
+:global(.button).button__pause:enabled:hover {
   background-color: #007095 !important;
 }
 
-.button.button__lap:enabled:hover {
+:global(.button).button__lap:enabled:hover {
   background-color: #444 !important;
 }
