@@ -18,13 +18,13 @@ test('computing time components from milliseconds', () => {
 });
 
 test('formatting time components', () => {
-	expect(new TimeComponents(0, 0, 0).toString()).toBe('00:00:000');
-	expect(new TimeComponents(0, 0, 100).toString()).toBe('00:00:100');
-	expect(new TimeComponents(0, 0, 999).toString()).toBe('00:00:999');
-	expect(new TimeComponents(0, 1, 0).toString()).toBe('00:01:000');
-	expect(new TimeComponents(0, 59, 999).toString()).toBe('00:59:999');
-	expect(new TimeComponents(1, 0, 0).toString()).toBe('01:00:000');
-	expect(new TimeComponents(1, 1, 0).toString()).toBe('01:01:000');
-	expect(new TimeComponents(1, 1, 123).toString()).toBe('01:01:123');
-	expect(new TimeComponents(20, 30, 0).toString()).toBe('20:30:000');
+	expect(new TimeComponents(0, 0, 0).toString()).toBe('00:00:00');
+	expect(new TimeComponents(0, 0, 100).toString()).toBe('00:00:10');
+	expect(new TimeComponents(0, 0, 999).toString()).toBe('00:00:99');
+	expect(new TimeComponents(0, 1, 0).toString()).toBe('00:01:00');
+	expect(new TimeComponents(0, 59, 999).toString()).toBe('00:59:99');
+	expect(new TimeComponents(1, 0, 0).toString()).toBe('01:00:00');
+	expect(new TimeComponents(1, 1, 0).toString()).toBe('01:01:00');
+	expect(new TimeComponents(1, 1, 123).toString()).toBe('01:01:12');
+	expect(new TimeComponents(20, 30, 0).toString()).toBe('20:30:00');
 });

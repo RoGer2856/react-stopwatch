@@ -21,7 +21,7 @@ function queryResetButton() {
 test('intial state; buttons and elapsed time render', () => {
   render(<Stopwatch onLapAdded={(lapInMillis) => { }} onResetLaps={() => { }} />);
 
-  expect(getElapsedTimeText()).toBe('00:00:000');
+  expect(getElapsedTimeText()).toBe('00:00:00');
 
   const startButton = queryStartButton();
   expect(startButton).toBeInTheDocument();
@@ -45,13 +45,13 @@ test('starting stopwatch; time increases', () => {
     jest.advanceTimersByTime(1500);
   });
 
-  expect(getElapsedTimeText()).toBe('00:01:500');
+  expect(getElapsedTimeText()).toBe('00:01:50');
 
   act(() => {
     jest.advanceTimersByTime(1500);
   });
 
-  expect(getElapsedTimeText()).toBe('00:03:000');
+  expect(getElapsedTimeText()).toBe('00:03:00');
 });
 
 test('starting, then pausing stopwatch; time increases, then stops', () => {
@@ -65,7 +65,7 @@ test('starting, then pausing stopwatch; time increases, then stops', () => {
     jest.advanceTimersByTime(1500);
   });
 
-  expect(getElapsedTimeText()).toBe('00:01:500');
+  expect(getElapsedTimeText()).toBe('00:01:50');
 
   fireEvent.click(queryPauseButton()!);
 
@@ -73,7 +73,7 @@ test('starting, then pausing stopwatch; time increases, then stops', () => {
     jest.advanceTimersByTime(1500);
   });
 
-  expect(getElapsedTimeText()).toBe('00:01:500');
+  expect(getElapsedTimeText()).toBe('00:01:50');
 });
 
 test('starting, then resetting stopwatch; time increases, then timer is set to 0 and stops', () => {
@@ -87,17 +87,17 @@ test('starting, then resetting stopwatch; time increases, then timer is set to 0
     jest.advanceTimersByTime(1500);
   });
 
-  expect(getElapsedTimeText()).toBe('00:01:500');
+  expect(getElapsedTimeText()).toBe('00:01:50');
 
   fireEvent.click(queryResetButton()!);
 
-  expect(getElapsedTimeText()).toBe('00:00:000');
+  expect(getElapsedTimeText()).toBe('00:00:00');
 
   act(() => {
     jest.advanceTimersByTime(1500);
   });
 
-  expect(getElapsedTimeText()).toBe('00:00:000');
+  expect(getElapsedTimeText()).toBe('00:00:00');
 });
 
 test('resetting the timer while it is running; time is reset to 0 and stops incrementing', () => {
@@ -112,7 +112,7 @@ test('resetting the timer while it is running; time is reset to 0 and stops incr
   });
 
   {
-    expect(getElapsedTimeText()).toBe('00:01:500');
+    expect(getElapsedTimeText()).toBe('00:01:50');
 
     const startButton = queryStartButton();
     expect(startButton).toBeNull();
@@ -129,7 +129,7 @@ test('resetting the timer while it is running; time is reset to 0 and stops incr
   fireEvent.click(queryResetButton()!);
 
   {
-    expect(getElapsedTimeText()).toBe('00:00:000');
+    expect(getElapsedTimeText()).toBe('00:00:00');
 
     const startButton = queryStartButton();
     expect(startButton).toBeInTheDocument();
@@ -146,7 +146,7 @@ test('resetting the timer while it is running; time is reset to 0 and stops incr
     jest.advanceTimersByTime(1500);
   });
 
-  expect(getElapsedTimeText()).toBe('00:00:000');
+  expect(getElapsedTimeText()).toBe('00:00:00');
 });
 
 test('start, pause, reset; checking button availabilities and their functions and time elapsing', () => {
@@ -161,7 +161,7 @@ test('start, pause, reset; checking button availabilities and their functions an
   });
 
   {
-    expect(getElapsedTimeText()).toBe('00:01:500');
+    expect(getElapsedTimeText()).toBe('00:01:50');
 
     const startButton = queryStartButton();
     expect(startButton).toBeNull();
@@ -178,7 +178,7 @@ test('start, pause, reset; checking button availabilities and their functions an
   fireEvent.click(queryPauseButton()!);
 
   {
-    expect(getElapsedTimeText()).toBe('00:01:500');
+    expect(getElapsedTimeText()).toBe('00:01:50');
 
     const startButton = queryStartButton();
     expect(startButton).toBeInTheDocument();
@@ -195,7 +195,7 @@ test('start, pause, reset; checking button availabilities and their functions an
   fireEvent.click(queryResetButton()!);
 
   {
-    expect(getElapsedTimeText()).toBe('00:00:000');
+    expect(getElapsedTimeText()).toBe('00:00:00');
 
     const startButton = queryStartButton();
     expect(startButton).toBeInTheDocument();

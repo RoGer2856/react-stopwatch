@@ -10,7 +10,8 @@ export class TimeComponents {
 	}
 
 	toString(): string {
-		return `${String(this.minutes).padStart(2, '0')}:${String(this.secondsInTheMinute).padStart(2, '0')}:${String(this.millisInTheSecond).padStart(3, '0')}`;
+		const millis = Math.floor(this.millisInTheSecond / 10);
+		return `${String(this.minutes).padStart(2, '0')}:${String(this.secondsInTheMinute).padStart(2, '0')}:${String(millis).padStart(2, '0')}`;
 	}
 }
 
