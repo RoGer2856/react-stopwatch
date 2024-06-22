@@ -1,0 +1,28 @@
+.list__container {
+	margin-top: 15px;
+	max-height: 250px;
+	overflow: auto;
+}
+
+.list {
+	display: flex;
+	flex-flow: column-reverse wrap;
+	justify-content: center;
+	margin-top: 0;
+	margin-right: 5px;
+	padding: 0;
+	list-style: none;
+	/* border: 1px solid #e1e4e8; */
+}
+
+.list>li {
+	padding: 0.5rem;
+}
+
+.list>li:nth-last-child(odd) {
+	background-color: #f6f8fa;
+}
+
+.list>li:nth-last-child(even) {
+	background-color: #fff;
+}

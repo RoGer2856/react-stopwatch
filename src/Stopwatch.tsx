@@ -45,11 +45,12 @@ export default function Stopwatch(props: {
 
   return (
     <>
-      <div aria-label="time elapsed">{timeComponents.toString()}</div>
-      <div>
-        {
-          isRunning
-            ? <button
+      <div className={styles.container}>
+        <div className={styles.time} aria-label="time elapsed">{timeComponents.toString()}</div>
+        <div>
+          {
+            isRunning
+              ? <button
                 className={`${styles.button} ${styles.button__pause}`}
                 onClick={onPause}
                 disabled={!isRunning}
@@ -57,7 +58,7 @@ export default function Stopwatch(props: {
               >
                 Pause
               </button>
-            : <button
+              : <button
                 className={`${styles.button} ${styles.button__start}`}
                 onClick={onStart}
                 disabled={isRunning}
@@ -65,23 +66,24 @@ export default function Stopwatch(props: {
               >
                 Start
               </button>
-        }
-        <button
-          className={`${styles.button} ${styles.button__reset}`}
-          onClick={onReset}
-          disabled={timeMillis === 0}
-          aria-label="reset stopwatch"
-        >
-          Reset
-        </button>
-        <button
-          className={`${styles.button} ${styles.button__lap}`}
-          onClick={onLap}
-          disabled={timeMillis === 0 || !isRunning}
-          aria-label="memorize lap"
-        >
-          Lap
-        </button>
+          }
+          <button
+            className={`${styles.button} ${styles.button__reset}`}
+            onClick={onReset}
+            disabled={timeMillis === 0}
+            aria-label="reset stopwatch"
+          >
+            Reset
+          </button>
+          <button
+            className={`${styles.button} ${styles.button__lap}`}
+            onClick={onLap}
+            disabled={timeMillis === 0 || !isRunning}
+            aria-label="memorize lap"
+          >
+            Lap
+          </button>
+        </div>
       </div>
     </>
   );
