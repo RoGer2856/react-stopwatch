@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react';
-import { padWithZeroes } from './utils';
+import { computeTimeComponents } from './utils';
 import styles from './Stopwatch.module.css';
 
 const TIME_STEP_MILLIS = 100;
@@ -32,14 +32,13 @@ export default function Stopwatch(): ReactElement {
     setTimeMillis(0);
   }
 
-  const seconds = Math.floor(timeMillis / 1000);
-  const minutes = Math.floor(seconds / 60);
-  const millisInTheSecond = padWithZeroes(timeMillis - seconds * 1000, 3);
-  const secondsInTheMinute = padWithZeroes(seconds - minutes * 60, 2);
+  const timeComponents = computeTimeComponents(timeMillis);
+  const seconds = String(timeComponents.secondsInTheMinute).padStart(2, '0');
+  const millis = String(timeComponents.millisInTheSecond).padStart(3, '0');
 
   return (
     <>
-      <div>{`${minutes}:${secondsInTheMinute}:${millisInTheSecond}`}</div>
+      <div>{`${timeComponents.minutes}:${seconds}:${millis}`}</div>
       <div>
         {
           isRunning
