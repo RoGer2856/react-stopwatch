@@ -1,5 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react';
-import { computeTimeComponents } from './utils';
+import { computeTimeComponents } from './TimeComponents';
 import styles from './Stopwatch.module.css';
 
 const TIME_STEP_MILLIS = 10;
@@ -42,13 +42,10 @@ export default function Stopwatch(props: {
   }
 
   const timeComponents = computeTimeComponents(timeMillis);
-  const minutes = String(timeComponents.minutes).padStart(2, '0');
-  const seconds = String(timeComponents.secondsInTheMinute).padStart(2, '0');
-  const millis = String(timeComponents.millisInTheSecond).padStart(3, '0');
 
   return (
     <>
-      <div aria-label="time elapsed">{`${minutes}:${seconds}:${millis}`}</div>
+      <div aria-label="time elapsed">{timeComponents.toString()}</div>
       <div>
         {
           isRunning
